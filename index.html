@@ -18,6 +18,30 @@
 
       <form id="form" class="form">
         <div class="field">
+          <label for="studentName">Nome completo</label>
+          <input
+            type="text"
+            id="studentName"
+            name="studentName"
+            value="Lucas Roberto da Silva"
+            autocomplete="off"
+            required
+          />
+        </div>
+
+        <div class="field">
+          <label for="ufscarNumber">Nº UFSCar</label>
+          <input
+            type="text"
+            id="ufscarNumber"
+            name="ufscarNumber"
+            value="760929"
+            autocomplete="off"
+            required
+          />
+        </div>
+
+        <div class="field">
           <label for="startDate">Data de início</label>
           <input
             type="text"
@@ -65,10 +89,7 @@
       </form>
 
       <footer class="footer">
-        <small>
-          Atesta o nome <strong>Lucas Roberto da Silva</strong> / Nº UFSCar
-          <strong>760929</strong>. Dados fictícios para PoC de geração de dataset sintético.
-        </small>
+        <small>Dados fictícios para PoC de geração de dataset sintético.</small>
       </footer>
     </main>
 

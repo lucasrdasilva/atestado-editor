@@ -23,6 +23,8 @@ const baseBytes = readFileSync(basePath);
 const now = new Date();
 
 const bytes = await generateAtestado(pdfLib, baseBytes, {
+  name: "Lucas Roberto da Silva",
+  ufscarNumber: "760929",
   startDate: "07/11/2024",
   endDate: "08/01/2027",
   period: computeCurrentPeriod(now),

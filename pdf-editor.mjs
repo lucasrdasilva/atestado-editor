@@ -5,9 +5,6 @@
 // which build is injected. All layout constants were extracted from the base
 // PDF with scripts/inspect-pdf.mjs.
 
-const STUDENT_NAME = "Lucas Roberto da Silva";
-const UFSCAR_NUMBER = "760929";
-
 const LAYOUT = {
   fontSize: 10,
   line1: {
@@ -16,7 +13,7 @@ const LAYOUT = {
       startX: 206.8,
       coverXStart: 204,
       coverXEnd: 560,
-      coverYBottom: 648.5,
+      coverYBottom: 647.5, // 1pt lower to fully hide original name
       coverHeight: 13,
     },
   },
@@ -26,8 +23,8 @@ const LAYOUT = {
       startX: 40,
       coverXStart: 38,
       coverXEnd: 360,
-      coverYBottom: 614,
-      coverHeight: 13,
+      coverYBottom: 613,  // bottom: below line4 descenders (~613.3)
+      coverHeight: 10,    // top at 623 — clears line3 descenders of p/ç (~624.8)
     },
   },
   footer: {
@@ -132,7 +129,7 @@ function whiteout(page, rect, rgb) {
  * @param {string} params.timestamp  "dd de Mês de yyyy (HH:mm)"
  * @returns {Promise<Uint8Array>} the generated PDF bytes.
  */
-export async function generateAtestado(pdfLib, baseBytes, { startDate, endDate, period, timestamp }) {
+export async function generateAtestado(pdfLib, baseBytes, { name, ufscarNumber, startDate, endDate, period, timestamp }) {
   const { PDFDocument, StandardFonts, rgb } = pdfLib;
 
   const pdfDoc = await PDFDocument.load(baseBytes);
@@ -148,9 +145,9 @@ export async function generateAtestado(pdfLib, baseBytes, { startDate, endDate, 
   drawSpans(
     page,
     [
-      { text: STUDENT_NAME, bold: true },
+      { text: name, bold: true },
       { text: ", Nº UFSCar ", bold: false },
-      { text: UFSCAR_NUMBER, bold: true },
+      { text: ufscarNumber, bold: true },
       { text: ", do curso de ", bold: false },
       { text: "Ciência da", bold: true },
     ],

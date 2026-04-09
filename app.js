@@ -47,6 +47,8 @@ async function fetchBasePdf() {
 
 function init() {
   const form = document.getElementById("form");
+  const nameInput = document.getElementById("studentName");
+  const ufscarInput = document.getElementById("ufscarNumber");
   const startInput = document.getElementById("startDate");
   const endInput = document.getElementById("endDate");
   const periodPreview = document.getElementById("periodPreview");
@@ -72,6 +74,11 @@ function init() {
     statusEl.textContent = "";
 
     try {
+      const name = nameInput.value.trim();
+      const ufscarNumber = ufscarInput.value.trim();
+      if (!name) throw new Error("Nome completo é obrigatório");
+      if (!ufscarNumber) throw new Error("Nº UFSCar é obrigatório");
+
       const startDate = validateDateString(startInput.value, "Data de início");
       const endDate = validateDateString(endInput.value, "Data de término");
 
@@ -84,6 +91,8 @@ function init() {
 
       const baseBytes = await fetchBasePdf();
       const bytes = await generateAtestado(pdfLib, baseBytes, {
+        name,
+        ufscarNumber,
         startDate,
         endDate,
         period,
