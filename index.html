@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>Atestado Editor — PoC</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="container">
+      <header>
+        <h1>Atestado Editor</h1>
+        <p class="subtitle">
+          Gera variações sintéticas do atestado de matrícula para datasets de treinamento.
+        </p>
+      </header>
+
+      <form id="form" class="form">
+        <div class="field">
+          <label for="startDate">Data de início</label>
+          <input
+            type="text"
+            id="startDate"
+            name="startDate"
+            placeholder="dd/MM/aaaa"
+            inputmode="numeric"
+            autocomplete="off"
+            required
+          />
+          <span class="hint">Formato: dd/MM/aaaa (ex: 07/11/2024)</span>
+        </div>
+
+        <div class="field">
+          <label for="endDate">Data de término</label>
+          <input
+            type="text"
+            id="endDate"
+            name="endDate"
+            placeholder="dd/MM/aaaa"
+            inputmode="numeric"
+            autocomplete="off"
+            required
+          />
+          <span class="hint">Formato: dd/MM/aaaa (ex: 08/01/2027)</span>
+        </div>
+
+        <div class="field readonly">
+          <label>Período letivo (auto)</label>
+          <output id="periodPreview">—</output>
+          <span class="hint">Calculado a partir da data atual do computador.</span>
+        </div>
+
+        <div class="field readonly">
+          <label>Timestamp de emissão (auto)</label>
+          <output id="timestampPreview">—</output>
+          <span class="hint">Gravado no rodapé na hora do download.</span>
+        </div>
+
+        <div class="actions">
+          <button type="submit" id="generateBtn">Gerar PDF</button>
+        </div>
+
+        <p id="status" class="status" role="status" aria-live="polite"></p>
+      </form>
+
+      <footer class="footer">
+        <small>
+          Atesta o nome <strong>Lucas Roberto da Silva</strong> / Nº UFSCar
+          <strong>760929</strong>. Dados fictícios para PoC de geração de dataset sintético.
+        </small>
+      </footer>
+    </main>
+
+    <script type="module" src="app.js"></script>
+  </body>
+</html>

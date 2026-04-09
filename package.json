@@ -1,0 +1,16 @@
+{
+  "name": "atestado-editor",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Generates synthetic variations of a UFSCar enrollment certificate for ML training datasets.",
+  "scripts": {
+    "inspect": "node scripts/inspect-pdf.mjs",
+    "test": "node scripts/test-gen.mjs",
+    "serve": "node scripts/serve.mjs"
+  },
+  "devDependencies": {
+    "pdf-lib": "^1.17.1",
+    "pdfjs-dist": "^4.7.76"
+  }
+}
